@@ -1,5 +1,4 @@
-# jSAS
-Java Syntax Altered Script
+# jSAS - Java Syntax Altered Script
 
 The major difference java is the ability to redefine operators and keywords and not requiring to have a class.
 
