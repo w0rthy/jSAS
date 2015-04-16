@@ -15,7 +15,6 @@ public class JSAS {
     static StringBuilder methods = new StringBuilder();
     static StringBuilder classes = new StringBuilder();
     static int timed = 0;
-    static int hashopsnospace = 0;
     
     public static void main(String[] args) throws Throwable{
         
@@ -128,15 +127,19 @@ public class JSAS {
         data = tmp.toString();
     }
 
+    private static boolean isAlpha(char c){
+        return (c>='0' && c<='9')||(c>='A' && c <='z');
+    }
+    
     private static boolean adjeq(int loc, int size, char c){
         return data.charAt(loc-1) == c || data.charAt(loc+size) == c;
     }
     private static boolean adjis(int loc, int size){
         if(loc == 0 )
-            return data.charAt(loc+size)<=32;
+            return !isAlpha(data.charAt(loc+size));
         else if(loc+size >= data.length())
-            return data.charAt(loc-1)<=32;
-        return data.charAt(loc-1)<=32 && data.charAt(loc+size)<=32;
+            return !isAlpha(data.charAt(loc-1));
+        return !isAlpha(data.charAt(loc-1)) && !isAlpha(data.charAt(loc+size));
     }
     
     private static void sortMethods(){
